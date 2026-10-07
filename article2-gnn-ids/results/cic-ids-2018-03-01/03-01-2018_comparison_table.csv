@@ -1,0 +1,14 @@
+Aspect,Original_Paper,Improved_Version
+GNN Layer,GCN (equal neighbor weights),GAT (learned attention weights)
+Attention Heads,None,4 parallel heads
+Features Used,All raw features,43 selected (variance+corr filter)
+Imbalance Handling,None,Weighted CrossEntropyLoss
+Training Control,Fixed 200 epochs,Early stopping (patience=25)
+Gradient Clipping,No,Yes (max_norm=1.0)
+LR Schedule,No,StepLR (halves every 50 epochs)
+Batch Norm,No,Yes (after layer 1)
+Evaluation,Accuracy only,Accuracy + F1 + AUC + per-class
+Explainability,None (black box),Attention weights + gradient saliency
+Dataset Support,Hardcoded synthetic data,Any CSV — filename auto-detected
+Output Filenames,Generic/hardcoded,Prefixed with '03-01-2018'
+Code Structure,5 scattered .py files,1 self-contained Colab file
